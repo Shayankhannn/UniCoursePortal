@@ -20,7 +20,7 @@ public class Learner implements Assessments{
 
     @Override
     public void assignmentScore(int marks) {
-        course.setAssignmentMarks(marks);
+        course.setQuizMarks(marks);
     }
 
     //TODO 14: override quizScore() method
@@ -28,11 +28,24 @@ public class Learner implements Assessments{
 
     @Override
     public void quizScore(int marks) {
-        course.setQuizMarks(marks);
+
     }
 
     public double calculateGrade() {
-        int maxAssignmentMarks, maxQuizMarks;
+        int maxAssignmentMarks=0, maxQuizMarks=0;
+        if (course instanceof OnlineCourse)
+        {
+            maxAssignmentMarks = 30;
+            maxQuizMarks = 10;
+
+
+        } else if (course instanceof ClassroomCourse) {
+            maxAssignmentMarks = 100;
+            maxQuizMarks = 30;
+        }
+        double assignmentPercentage = ((double)course.getAssignmentMarks()/maxAssignmentMarks)*10;
+        double quizPercentage = ((double) course.getQuizMarks()/maxQuizMarks)*10;
+        gradeScore = (assignmentPercentage+quizPercentage)/2;
 
         //TODO 17: calculate gradeScore as per the instructions
         // - For online courses: assignment max = 30, quiz max = 10
