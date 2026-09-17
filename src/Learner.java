@@ -12,7 +12,7 @@ public class Learner implements Assessments{
         this.course=course;
     }
     public String toString() {
-        return "Name: " + this.name + " " + "Course: " + this.course.subject.title;
+        return "Name: " + this.name + " " + "Course: " + this.course.getSubject().title;
     }
 
     //TODO 13: override assignmentScore() method
@@ -20,7 +20,7 @@ public class Learner implements Assessments{
 
     @Override
     public void assignmentScore(int marks) {
-        course.setQuizMarks(marks);
+        course.setAssignmentMarks(marks);
     }
 
     //TODO 14: override quizScore() method
@@ -28,7 +28,7 @@ public class Learner implements Assessments{
 
     @Override
     public void quizScore(int marks) {
-
+        course.setQuizMarks(marks);
     }
 
     public double calculateGrade() {
