@@ -9,6 +9,8 @@ class OnlineCourse extends Course {
         this.weeks=weeks;
     }
     //TODO 15: declare instance variables
+
+
     // Hint: weeks (int), videoLessons (int)
 
     //TODO 16: create a constructor
